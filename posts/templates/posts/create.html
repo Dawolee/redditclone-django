@@ -1,0 +1,22 @@
+<h1>Create post!</h1>
+
+
+
+<form method="POST" action="{% url 'posts:create' %}">
+  {% csrf_token %}
+
+
+
+  <h4>Title:</h4>
+  <input type='text' name='title' />
+  <h4>URL:</h4>
+  <input type='text' name='url' />
+  <br />
+  <br />
+  <input type='hidden' name='next' value={{request.GET.next}} />
+  <input type='submit' value='Post!' />
+</form>
+
+{% if error %}
+{{error}}
+{% endif %}

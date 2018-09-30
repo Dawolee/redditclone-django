@@ -1,0 +1,15 @@
+<h1>The Front Page of the Homepage!</h1>
+<a href="{% url 'posts:create' %}">Create new Post</a>
+
+<br />
+<br />
+
+{% for post in posts.all %}
+<a href="{% url 'posts:upvote' pk=post.id %}">+</a>{{post.votes_total}}<a href="{% url 'posts:downvote' pk=post.id %}">-</a>
+<a href="{{ post.url }}">{{post.title}}</a>
+<br />
+{{post.pub_date}} by {{post.author.username}}
+<br />
+<br />
+
+{% endfor %}
